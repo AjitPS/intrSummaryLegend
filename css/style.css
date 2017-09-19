@@ -1,0 +1,132 @@
+html{
+	height: 100%;
+}
+body {
+	background-color:#f2f2f2;
+	font-family: 'Play', sans-serif;
+	min-width:960px;
+	margin:0;
+	}
+#content {
+	padding-bottom:30px;
+	margin:auto;
+	width: 80%;
+	
+	}
+
+div.scrollTable {
+	width:100%;       /* table width will be 99% of this*/
+	max-height:/*400*/600px;    /* must be greater than tbody*/
+	overflow:auto;
+	margin:0 auto;
+}
+div.scrollTable table {
+    width:99%;  /*100% of container produces horiz. scroll in Mozilla*/
+	border:none;
+	border-spacing:0px;
+	background-color:transparent;
+	border:1px solid #C2C2C2;
+	border-collapse:collapse;
+}
+div.scrollTable th, div.scrollTable td {
+    padding:4px;
+    border:1px solid #C2C2C2;
+}
+div.scrollTable tbody {
+	overflow: auto;
+	max-height: 280px;
+	overflow-x: hidden;
+}
+div.scrollTable table>tbody {
+  overflow:auto;
+  max-height:280px;
+  overflow-x:hidden;
+}
+div.scrollTable table>tbody tr {
+  height:auto;
+}
+div.scrollTable table>thead tr {
+  position:relative;
+  top: 0px;/*expression(offsetParent.scrollTop); IE5+ only*/
+}
+/* tablesorter */
+table.tablesorter {
+	font-family:arial;
+	background-color:#C0C0C0;
+	margin:10px 0pt 15px;
+	font-size: 10pt;
+	width: 100%;
+	text-align: left;
+}
+table.tablesorter thead tr th, table.tablesorter tfoot tr th {
+	background-color:#C0C0C0;
+	color:black;
+	font-size:10pt;
+	padding:4px;
+}
+table.tablesorter thead tr .header {
+	background-image: url(../image/bg.gif);
+	background-repeat: no-repeat;
+	background-position: center right;
+	cursor: pointer;
+}
+table.tablesorter tbody td {
+	color:#3D3D3D;
+	padding:4px;
+	background-color:#FFF;
+	vertical-align:top;
+}
+table.tablesorter tbody tr.odd td {
+	background-color:#D5EECD;
+}
+table.tablesorter thead tr .headerSortUp {
+	background-image:url(../image/asc.gif);
+}
+table.tablesorter thead tr .headerSortDown {
+	background-image:url(../image/desc.gif);
+}
+table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
+	background-color:#F0F0F6;
+	background-color:#BDB7A8;
+}
+
+table.tablesorter tbody td {
+	color:#3D3D3D;
+	background-color:#FFF;
+}
+
+/* Evidence pictures */
+.evidence_item {margin:0px 3px 3px 0px;float:left;position:relative; height:18px;padding-top:4px; width:22px;text-align:center; font:12px Arial, Helvetica, sans-serif}
+.evidence_item_Gene {background:url(../image/Gene.png) no-repeat;padding-top:6px;height:16px;}
+.evidence_item_BioProc {background:url(../image/Bioogical_proccess.png) no-repeat;}
+.evidence_item_CelComp {background:url(../image/Cellular_component.png) no-repeat;}
+.evidence_item_Comp {background:url(../image/Compound.png) no-repeat;}
+.evidence_item_SNP {background:url(../image/Compound.png) no-repeat;}
+.evidence_item_Enzyme {background:url(../image/Enzyme.png) no-repeat;}
+.evidence_item_EC {background:url(../image/Enzyme_clasification.png) no-repeat;}
+.evidence_item_MolFunc {background:url(../image/Molecular_function.png) no-repeat;}
+.evidence_item_Path {background:url(../image/Pathway.png) no-repeat;}
+.evidence_item_Protein {background:url(../image/Protein.png) no-repeat;}
+.evidence_item_ProtDomain {background:url(../image/Protein_domain.png) no-repeat;}
+.evidence_item_Publication {background:url(../image/Publication.png) no-repeat;}
+.evidence_item_Reaction {background:url(../image/Reaction.png) no-repeat;}
+.evidence_item_Transport {background:url(../image/Transport.png) no-repeat;}
+.evidence_item_TO {background:url(../image/Trait_ontology.png) no-repeat;}
+.evidence_item_Phenotype {background:url(../image/Phenotype.png) no-repeat;}
+.evidence_item_Trait {background:url(../image/Trait.png) no-repeat;}
+.evidence_item_Drug {background:url(../image/Drug.png) no-repeat;}
+.evidence_item_Disease {background:url(../image/Disease.png) no-repeat;}
+.evidence_item_DGES {background:url(../image/DGES.png) no-repeat;}
+.evidence_item_QTL {background:url(../image/QTL.png) no-repeat;}
+.evidence_item_Scaffold {background:url(../image/Scaffold.png) no-repeat;}
+
+/* Preload the evidence pictures */
+body:after{
+	content:url(../image/Gene.png) url(../image/Bioogical_proccess.png) url(../image/Cellular_component.png) url(../image/Compound.png) url(../image/Enzyme.png) url(../image/Enzyme_clasification.png) url(../image/Molecular_function.png) url(../image/Pathway.png) url(../image/Protein.png) url(../image/Protein_domain.png) url(../image/Publication.png) url(../image/Reaction.png) url(../image/Transport.png) url(../image/Trait_ontology.png) url(../image/Phenotype.png)  url(../image/Trait.png) url(../image/Drug.png) url(../image/Disease.png) url(../image/DGES.png) url(../image/QTL.png) url(../image/Scaffold.png);
+	display:none;
+}
+
+/* Evidence View */
+.evidenceSummary {position:relative; width:100%;}
+.evidenceSummary .evidenceSummaryItem {position:relative;float:left;width:50px;font-size:11px;}
+

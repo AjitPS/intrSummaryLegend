@@ -1,0 +1,28 @@
+<html>
+<head>
+        <link href="css/style.css" rel="stylesheet" />
+        <meta charset=utf-8 />
+        <script src="libs/jquery-1.11.2.min.js"></script>
+        <script src="js/summariseLegend.js"></script>
+        <script src="js/test-code.js"></script>
+</head>
+<body>
+ <div id="content">
+            <br/><br/>
+			<div>Select dataset: <select id="dataset_dropdown" onChange="createGenesTable($('#dataset_dropdown').val(),50);">
+                    <option value="dataset1" selected="selected" title="dataset1.tab">Dataset 1</option>
+                    <option value="dataset2" title="dataset2.tab">Dataset 2</option>
+                    <option value="dataset3" title="dataset3.tab">Dataset 3</option>
+                    <option value="dataset4" title="dataset4.tab">Dataset 4</option>
+                    <option value="dataset5" title="dataset5.tab">Dataset 5</option>
+                </select>
+            </div>
+			<br/>
+			
+        <div id="tabviewer_content">
+            <div id="resultsTable" class="resultViewer"></div>
+		</div>
+
+ </div>
+</body>
+</html>
