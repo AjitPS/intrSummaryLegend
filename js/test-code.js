@@ -19,24 +19,22 @@ function createGenesTable(tableUrl, rows){
                 
     		if(candidate_genes.length > 2) {
 		        table =  '';
-				console.log("printGenesTable()>> text: "+ text);
-				// legend
-				getInteractiveSummaryLegend(text);
+				// Gene View: interactive summary legend for evidence types.
+				var interactive_summary_Legend= getInteractiveSummaryLegend(text);
 				
-				table = table + '<p class="margin_left"><a href="'+tableUrl+'" target="_blank">Download as TAB delimited file</a><br />';
-				table = table + 'Select gene(s) and click "View Network" button to see the network.<span id="hintSortableTable" class="hint hint-small" ></span></p>';
+				table = table + '<p class="margin_left"><span id="hintSortableTable" class="hint hint-small" ></span></p>';
 				table = table + '<form name="checkbox_form">';
-				table = table + 'Max number of genes to show: ';
+			/*	table = table + 'Max number of genes to show: ';
 				table = table + '<select value="'+rows+'" id="numGenes">';
 				table = table + '<option value="50">50</option>';
 				table = table + '<option value="100">100</option>';
 				table = table + '<option value="200">200</option>';
 				table = table + '<option value="500">500</option>';
 				table = table + '<option value="1000">1000</option>';
-				table = table + '<select>';
+				table = table + '<select>';*/
 				// dynamic Evidence Summary to be displayed above Gene View table
-				table = table + '<div id="evidenceSummary2" class="evidenceSummary" title="Click to filter by type"></div>';
-			//	table = table + interactive_legend;
+			//	table = table + '<div id="evidenceSummary2" class="evidenceSummary" title="Click to filter by type"></div>';
+				table = table + interactive_summary_Legend;
 				table = table + '<div id= "geneViewTable" class = "scrollTable">';
 				table = table + '<table id = "tablesorter" class="tablesorter">';
 				table = table + '<thead>';
