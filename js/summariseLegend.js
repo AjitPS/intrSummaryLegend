@@ -1,11 +1,14 @@
-
+ /*
+  * Function to create interactive legend as summary for Gene View evidences.
+  * @returns interactive Gene View summary legend <div>
+  */
  function getInteractiveSummaryLegend(GeneView_fullText) {
   var evidences_rows= GeneView_fullText.split("\n");
 //console.log("getInteractiveSummaryLegend()>> evidences_rows: "+ evidences_rows);
 
   var evidencesArr= new Array();
   for(var i=1; i < evidences_rows.length; i++) {
-      var evi_value= evidences_rows[i].split("\t")[9].trim();
+      var evi_value= evidences_rows[i].trim().split("\t")[9];
       if(evi_value !== "") {
          evidencesArr.push(evi_value);
         }
@@ -71,3 +74,41 @@ console.log("evidence_Types: "+ JSON.stringify(evidence_Types));
   legend= legend + summaryText +'</div>';
   return legend;
  }
+
+  /*
+  * Function
+  * Filter visible table by selected Concept Type
+  */
+ function filterTableByType(key){
+  console.log("filterTableByType: "+ key);
+  // Check which Tab user is on: Gene View or Evidence View
+  if ($('#resultsTable').css('display') == 'block') {
+      console.log("filter Gene View");
+      // get tbody
+//      $('#geneViewTable').children('tbody');
+     }
+  else if ($('#evidenceTable').css('display') == 'block') {
+      console.log("filter Evidence View");
+      // get tbody
+//      $('#evidenceViewTable').children('tbody');
+     }
+  // Pending
+ }
+
+ /*
+  * Function
+  * Filter visible table by selected Concept Type
+  */
+ function revertTable(key){
+  console.log("Revert to original table...");
+  // Check which Tab user is on: Gene View or Evidence View
+  if ($('#resultsTable').css('display') == 'block') {
+      console.log("revert Gene View");
+     }
+  else if ($('#evidenceTable').css('display') == 'block') {
+      console.log("revert Evidence View");
+     }
+  // Pending
+  console.log("Redraw legend...");
+ }
+
