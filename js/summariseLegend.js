@@ -8,7 +8,7 @@
 
   var evidencesArr= new Array();
   for(var i=1; i < evidences_rows.length; i++) {
-      var evi_value= evidences_rows[i].trim().split("\t")[9];
+      var evi_value= evidences_rows[i].split("\t")[9].trim();
       if(evi_value !== "") {
          evidencesArr.push(evi_value);
         }
@@ -18,6 +18,7 @@ console.log("evidencesArr: "+ evidencesArr);
   var evidences_Summary= new Array();
   // Iterate through evidences and get counts for each evidence Concept Type.
   evidencesArr.forEach(function(evi) {
+  console.log("evi=" +evi);
       var row_values= evi.trim().split("||");
       row_values.forEach(function(rv) {
 console.log("\t \t row_value: "+ rv);
@@ -61,7 +62,7 @@ console.log("evidence_Types: "+ JSON.stringify(evidence_Types));
   // Display evidence icons with count and name in legend.
   var legend= '<div id="evidenceSummary2" class="evidenceSummary" title="Click to filter by type">';
   var summaryText = '';
-  for(key in evidence_Types){
+  for(var key in evidence_Types){
       var contype= key.trim();
 	  if (key !== "Trait") {
 	      summaryText = summaryText+'<div class="evidenceSummaryItem"><div class="evidence_item evidence_item_'+key+'" onclick="filterTableByType("'+contype+'");" title="'+key+'"></div>'+evidence_Types[key]+'</div>';
