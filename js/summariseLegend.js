@@ -65,10 +65,10 @@ console.log("evidence_Types: "+ JSON.stringify(evidence_Types));
   for(var key in evidence_Types){
       var contype= key.trim();
 	  if (key !== "Trait") {
-	      summaryText = summaryText+'<div class="evidenceSummaryItem"><div class="evidence_item evidence_item_'+key+'" onclick="filterTableByType("'+contype+'");" title="'+key+'"></div>'+evidence_Types[key]+'</div>';
+	      summaryText = summaryText +'<div class="evidenceSummaryItem"><div class="evidence_item evidence_item_'+key+'" onclick=filterTableByType("'+contype+'"); title="'+key+'"></div>'+evidence_Types[key]+'</div>';
 		 }
 	  else { // For Trait, display tooltip text as GWAS instead.
-	    summaryText = summaryText+'<div class="evidenceSummaryItem"><div class="evidence_item evidence_item_'+key+'" onclick="filterTableByType("'+contype+'");" title="GWAS"></div>'+evidence_Types[key]+'</div>';
+	    summaryText = summaryText +'<div class="evidenceSummaryItem"><div class="evidence_item evidence_item_'+key+'" onclick=filterTableByType("'+contype+'"); title="GWAS"></div>'+evidence_Types[key]+'</div>';
 	   }
 	 }
 
@@ -87,11 +87,6 @@ console.log("evidence_Types: "+ JSON.stringify(evidence_Types));
       console.log("filter Gene View");
       // get tbody
 //      $('#geneViewTable').children('tbody');
-     }
-  else if ($('#evidenceTable').css('display') == 'block') {
-      console.log("filter Evidence View");
-      // get tbody
-//      $('#evidenceViewTable').children('tbody');
      }
   // Pending
  }
