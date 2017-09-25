@@ -22,19 +22,20 @@ function createGenesTable(tableUrl, rows){
 				// Gene View: interactive summary legend for evidence types.
 				var interactive_summary_Legend= getInteractiveSummaryLegend(text);
 				
-				table = table + '<p class="margin_left"><span id="hintSortableTable" class="hint hint-small" ></span></p>';
+				table = table + '<p class="margin_left"><br/><span id="hintSortableTable" class="hint hint-small" ></span></p>';
 				table = table + '<form name="checkbox_form">';
-			/*	table = table + 'Max number of genes to show: ';
+				table = table + 'Max number of genes to show: ';
 				table = table + '<select value="'+rows+'" id="numGenes">';
 				table = table + '<option value="50">50</option>';
 				table = table + '<option value="100">100</option>';
 				table = table + '<option value="200">200</option>';
 				table = table + '<option value="500">500</option>';
 				table = table + '<option value="1000">1000</option>';
-				table = table + '<select>';*/
+				table = table + '</select>';
+				table = table + '<br><br>';
 				// dynamic Evidence Summary to be displayed above Gene View table
-			//	table = table + '<div id="evidenceSummary2" class="evidenceSummary" title="Click to filter by type"></div>';
-				table = table + interactive_summary_Legend;
+		//		table = table + '<div id="evidenceSummary2" class="evidenceSummary" title="Click to filter by type"></div>';
+				table = table + /*'<div id="evidence_Summary_Legend">'+*/ interactive_summary_Legend +'<input id="revertGeneView" type="button" value= "Undo All" title= "Revert all filtering changes"></div>';
 				table = table + '<div id= "geneViewTable" class = "scrollTable">';
 				table = table + '<table id = "tablesorter" class="tablesorter">';
 				table = table + '<thead>';
@@ -166,13 +167,37 @@ function createGenesTable(tableUrl, rows){
 		        table = table + '</form>';
     		}
 
-                table = table + '</insert><div id="loadingNetworkDiv"></div></div>';
+                table = table + '</insert>';
 
     		document.getElementById('resultsTable').innerHTML = table;
                 
                 // display dynamic Evidence Summary legend above the Gene View table as well.
             //    var evidences_legend= $("#evidenceSummary1").html();
             //    $("#evidenceSummary2").html(evidences_legend);
+			
+    		$("#tablesorter").tablesorter({
+    	        headers: {
+    	            // do not sort "select" column
+                /*  5: {sorter:"digit"},*/
+                  4: {sorter:"digit"}, /* sort by SCORE column by default */
+    	            8: {sorter: false}
+    	        }
+    	    });
+
+    		$("#numGenes").change(function(e){
+    			printGenesTable(text);	//if number of genes to show changes, redraw table.
+    		});
+            
+			/*
+			 * Function
+			 * Revert Evidence Filtering changes
+			 */
+           $("#revertGeneView").click(function(e) {
+		     console.log("Revert Gene View...");
+             printGenesTable(text); // redraw table
+		    });
+			
 		}
 		});
+
 }

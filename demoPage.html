@@ -3,13 +3,14 @@
         <link href="css/style.css" rel="stylesheet" />
         <meta charset=utf-8 />
         <script src="libs/jquery-1.11.2.min.js"></script>
+        <script src="libs/jquery.tablesorter.js"></script>
         <script src="js/summariseLegend.js"></script>
         <script src="js/test-code.js"></script>
 </head>
 <body>
  <div id="content">
             <br/><br/>
-			<div>Select dataset: <select id="dataset_dropdown" onChange="createGenesTable($('#dataset_dropdown').val(),50);">
+			<div>Select dataset: <select id="dataset_dropdown" onChange="createGenesTable($('#dataset_dropdown').val(),$('#numGenes').val());">
                     <option value="dataset1" title="dataset1.tab">Dataset 1</option>
                     <option value="dataset2" selected="selected" title="dataset2.tab">Dataset 2</option>
                     <option value="dataset3" title="dataset3.tab">Dataset 3</option>

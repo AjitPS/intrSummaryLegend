@@ -13,21 +13,21 @@
          evidencesArr.push(evi_value);
         }
      }
-console.log("evidencesArr: "+ evidencesArr);
+//console.log("evidencesArr: "+ evidencesArr);
 
   var evidences_Summary= new Array();
   // Iterate through evidences and get counts for each evidence Concept Type.
   evidencesArr.forEach(function(evi) {
-  console.log("evi=" +evi);
+//  console.log("evi=" +evi);
       var row_values= evi.trim().split("||");
       row_values.forEach(function(rv) {
-console.log("\t \t row_value: "+ rv);
+//console.log("\t \t row_value: "+ rv);
           var evidence_elements= rv.trim().split("//");
 //console.log("\t \t \t evidence_elements: "+ evidence_elements);
           // add to Array evidence_elements[0] & length-1
           var conType= evidence_elements[0].trim();
           var conCount= evidence_elements.length-1;
-		  console.log("\t type: "+ conType +", count: "+ conCount);
+		//  console.log("\t type: "+ conType +", count: "+ conCount);
 		  for(var k=1; k <= conCount; k++) {
 		      var type_evi= conType +"|"+ evidence_elements[k].trim();
 		      //console.log("\t \t type_evi: "+ type_evi);
@@ -39,7 +39,7 @@ console.log("\t \t row_value: "+ rv);
 		     }
         });
      });
-console.log("evidences_Summary: "+ evidences_Summary);
+//console.log("evidences_Summary: "+ evidences_Summary);
 
    var evidence_Types= {}; // new Object();
   // For each line in evidences_Summary array, split by |, take cell 0 (type) and store with count.
@@ -72,7 +72,7 @@ console.log("evidence_Types: "+ JSON.stringify(evidence_Types));
 	   }
 	 }
 
-  legend= legend + summaryText +'</div>';
+  legend= legend + summaryText /*+'</div>'*/;
   return legend;
  }
 
@@ -84,27 +84,23 @@ console.log("evidence_Types: "+ JSON.stringify(evidence_Types));
   console.log("filterTableByType: "+ key);
   // Check which Tab user is on: Gene View or Evidence View
   if ($('#resultsTable').css('display') == 'block') {
-      console.log("filter Gene View");
       // get tbody
-//      $('#geneViewTable').children('tbody');
+    //  $('#tablesorter').children('tbody');
+	  var gvTable= /*$('#tablesorter');*/ document.getElementById("tablesorter");
+	  var rowLength= gvTable.rows.length;
+	  console.log("rows= "+ rowLength +", columns= "+ gvTable.rows[0].cells.length);
+	  for(var i=1; i < rowLength; i++) { // i=1 to skip title row
+	      var currentRow= gvTable.rows.item(i);
+	      // get cells of current row
+		  var gv_cells = currentRow.cells;
+		  var gene_acc= gv_cells.item(0).innerHTML; // Accession
+		  var gene_evidences= gv_cells.item(gv_cells.length-2).innerHTML; // Evidences
+  	      // if this Accession doesn't have key in evidences, hide the row.
+		  if(!gene_evidences.includes(key)) {
+		//  console.log("gene_acc: "+ gene_acc +"; evidences: "+ gene_evidences);
+		     // hide row
+			 currentRow.style.display= 'none';
+		    }
+	     }
      }
-  // Pending
  }
-
- /*
-  * Function
-  * Filter visible table by selected Concept Type
-  */
- function revertTable(key){
-  console.log("Revert to original table...");
-  // Check which Tab user is on: Gene View or Evidence View
-  if ($('#resultsTable').css('display') == 'block') {
-      console.log("revert Gene View");
-     }
-  else if ($('#evidenceTable').css('display') == 'block') {
-      console.log("revert Evidence View");
-     }
-  // Pending
-  console.log("Redraw legend...");
- }
-
