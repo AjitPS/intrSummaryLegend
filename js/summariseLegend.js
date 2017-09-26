@@ -60,7 +60,7 @@
 console.log("evidence_Types: "+ JSON.stringify(evidence_Types));
    
   // Display evidence icons with count and name in legend.
-  var legend= '<div id="evidenceSummary2" class="evidenceSummary" title="Click to filter by type">';
+  var legend= '<div id="evidence_Summary_Legend" class="evidenceSummary">'+ '<div id="evidenceSummary2" class="evidenceSummary" title="Click to filter by type">';
   var summaryText = '';
   for(var key in evidence_Types){
       var contype= key.trim();
@@ -72,7 +72,16 @@ console.log("evidence_Types: "+ JSON.stringify(evidence_Types));
 	   }
 	 }
 
-  legend= legend + summaryText /*+'</div>'*/;
+  legend= legend + summaryText +'</div>' +'<input id="revertGeneView" type="button" value="Undo All" onclick="revertGeneViewTable(\''+GeneView_fullText+'\');" title= "Revert all filtering changes"></div>';
+  
+  /*
+   * Revert Evidence Filtering changes
+  */
+ /* $("#revertGeneView").click(function(e) {
+    console.log("Revert Gene View...");
+    printGenesTable(GeneView_fullText); // redraw table
+   });*/
+
   return legend;
  }
 
@@ -80,7 +89,7 @@ console.log("evidence_Types: "+ JSON.stringify(evidence_Types));
   * Function
   * Filter visible table by selected Concept Type
   */
- function filterTableByType(key){
+ function filterTableByType(key) {
   console.log("filterTableByType: "+ key);
   // Check which Tab user is on: Gene View or Evidence View
   if ($('#resultsTable').css('display') == 'block') {
@@ -103,4 +112,14 @@ console.log("evidence_Types: "+ JSON.stringify(evidence_Types));
 		    }
 	     }
      }
+ }
+
+ /*
+ * Function
+ * Gene View table: Revert Evidence Filtering changes
+ */
+ function revertGeneViewTable(GeneView_fullText) {
+   console.log("Revert Gene View...");
+   printGenesTable(GeneView_fullText); // redraw table
+   console.log("reverted...");
  }
