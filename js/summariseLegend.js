@@ -18,7 +18,6 @@
   var evidences_Summary= new Array();
   // Iterate through evidences and get counts for each evidence Concept Type.
   evidencesArr.forEach(function(evi) {
-//  console.log("evi=" +evi);
       var row_values= evi.trim().split("||");
       row_values.forEach(function(rv) {
 //console.log("\t \t row_value: "+ rv);
@@ -34,7 +33,7 @@
 
 			  if(!evidences_Summary.includes(type_evi)) {
 			     evidences_Summary.push(type_evi);
-		      //console.log("\t \t \t New/unique type_evi: "+ type_evi +" Saved!");
+			//	 console.log("\t \t \t New/unique type_evi: "+ type_evi +" Saved!");
 				}
 		     }
         });
@@ -46,7 +45,6 @@
   evidences_Summary.forEach(function(evidence) {
 	var evidenceType= evidence.split("|")[0].trim();
 //	console.log("evidence_Types["+evidenceType+"]: "+ evidence_Types[evidenceType]);
-	// store evidences[BioProc]= {count: '', ids=",,,,,,,,"}
 	if(evidenceType in evidence_Types) { // increment count
 	   var eviCount= evidence_Types[evidenceType] + 1;
 	   evidence_Types[evidenceType]= eviCount;
@@ -74,7 +72,7 @@
 	 }
 
  // legend= legend + summaryText +'</div>' +'<input id="revertGeneView" type="button" value="Undo All" onclick="revertGeneViewTable(\''+GeneView_fullText.trim()+'\');" title= "Revert all filtering changes"></div>';
-  legend= legend + summaryText +'</div>'; //+'<input id="revertGeneView" type="button" value="Undo All" onclick="revertGeneViewTable(\''+GeneView_fullText.trim()+'\');" title= "Revert all filtering changes"></div>';
+  legend= legend + summaryText +'</div>';
   
   return legend;
  }
