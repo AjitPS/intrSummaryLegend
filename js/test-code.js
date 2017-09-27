@@ -3,8 +3,8 @@ function createGenesTable(tableUrl, rows){
 	var table = "";
 	//tableUrl= "D://GitHub_repos//intrSummaryLegend//testData//"+ tableUrl +".tab";
 	tableUrl= "http://localhost:8000/testData/"+ tableUrl +".tab";
-    console.log("Selected dataset: "+ tableUrl);
-    console.log("rows= "+ rows);
+  //  console.log("Selected dataset: "+ tableUrl);
+  //  console.log("rows= "+ rows);
 	$.ajax({
         url: tableUrl,
         type:'GET',
@@ -34,8 +34,8 @@ function createGenesTable(tableUrl, rows){
 				table = table + '<select>';
 				table = table + '<br><br>';
 				// dynamic Evidence Summary to be displayed above Gene View table
-		//		table = table + '<div id="evidenceSummary2" class="evidenceSummary" title="Click to filter by type"></div>';
-				table = table + interactive_summary_Legend;
+			//	table = table + interactive_summary_Legend;
+				table = table + '<div id="evidence_Summary_Legend" class="evidenceSummary">'+ interactive_summary_Legend + '<input id="revertGeneView" type="button" value="Undo All" title= "Revert all filtering changes"></div>';
 				table = table + '<div id= "geneViewTable" class = "scrollTable">';
 				table = table + '<table id = "tablesorter" class="tablesorter">';
 				table = table + '<thead>';
@@ -185,8 +185,17 @@ function createGenesTable(tableUrl, rows){
     	    });
 
     		$("#numGenes").change(function(e){
-    			printGenesTable(text);	//if number of genes to show changes, redraw table.
+    		  printGenesTable(text);	//if number of genes to show changes, redraw table.
     		});
+			
+			/*
+			 * Revert Evidence Filtering changes
+			*/
+			$("#revertGeneView").click(function(e) {
+			//  console.log("Revert Gene View...");
+              printGenesTable(text); // redraw table
+			});
+
             
 		}
 		});
